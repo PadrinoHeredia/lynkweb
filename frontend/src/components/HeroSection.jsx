@@ -28,11 +28,12 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
         {/* Logo Grande */}
-        <div className="mb-8 animate-fade-in">
+        <div className="mb-10 animate-fade-in">
           <img
             src={siteConfig.logo}
             alt="LYNK"
-            className="h-32 md:h-44 lg:h-52 w-auto mx-auto object-contain drop-shadow-2xl"
+            className="h-64 md:h-80 lg:h-96 w-auto mx-auto object-contain drop-shadow-2xl"
+            style={{ filter: 'drop-shadow(0 0 30px rgba(220, 38, 38, 0.3))' }}
           />
         </div>
 
