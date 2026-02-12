@@ -40,12 +40,12 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6">
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
-                className="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium"
+                className="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium whitespace-nowrap"
               >
                 {item.label}
               </button>
