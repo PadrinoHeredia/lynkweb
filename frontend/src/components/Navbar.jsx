@@ -40,7 +40,7 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
               <button
                 key={item.label}
