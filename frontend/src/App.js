@@ -1,38 +1,48 @@
-import { useEffect } from "react";
-import "@/App.css";
+import React from "react";
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// Components
+import Navbar from "./components/Navbar";
+import HeroSection from "./components/HeroSection";
+import DifferentiationSection from "./components/DifferentiationSection";
+import PhilosophySection from "./components/PhilosophySection";
+import PresenciaSection from "./components/PresenciaSection";
+import EcosistemaSection from "./components/EcosistemaSection";
+import AboutSection from "./components/AboutSection";
+import PhilosophyMainSection from "./components/PhilosophyMainSection";
+import ServicesSection from "./components/ServicesSection";
+import MapSection from "./components/MapSection";
+import PackagesSection from "./components/PackagesSection";
+import MethodologySection from "./components/MethodologySection";
+import TransparencySection from "./components/TransparencySection";
+import JobSection from "./components/JobSection";
+import ContactSection from "./components/ContactSection";
+import SocialFeedSection from "./components/SocialFeedSection";
+import Footer from "./components/Footer";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
+    <div className="bg-black min-h-screen">
+      <Navbar />
+      <HeroSection />
+      <DifferentiationSection />
+      <PhilosophySection />
+      <PresenciaSection />
+      <EcosistemaSection />
+      <AboutSection />
+      <PhilosophyMainSection />
+      <ServicesSection />
+      <MapSection />
+      <PackagesSection />
+      <MethodologySection />
+      <TransparencySection />
+      <JobSection />
+      <SocialFeedSection />
+      <ContactSection />
+      <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
@@ -42,9 +52,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
+          <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </div>
