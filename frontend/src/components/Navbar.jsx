@@ -25,10 +25,10 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-black/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#inicio" className="flex-shrink-0">
@@ -40,12 +40,14 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-6">
+          <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
-                className="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium whitespace-nowrap"
+                className={`transition-colors duration-200 text-sm font-medium ${
+                  isScrolled ? 'text-gray-700 hover:text-red-600' : 'text-white hover:text-red-300'
+                }`}
               >
                 {item.label}
               </button>
@@ -56,7 +58,6 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className="bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105"
             >
-              <MessageCircle size={18} />
               Contáctanos
             </a>
           </div>
@@ -64,7 +65,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-white p-2"
+            className={`lg:hidden p-2 ${isScrolled ? 'text-gray-900' : 'text-white'}`}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -77,12 +78,12 @@ const Navbar = () => {
           isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="bg-black/95 backdrop-blur-md px-4 py-4 space-y-4">
+        <div className="bg-white shadow-lg px-4 py-4 space-y-4">
           {navItems.map((item) => (
             <button
               key={item.label}
               onClick={() => scrollToSection(item.href)}
-              className="block w-full text-left text-gray-300 hover:text-white transition-colors duration-200 py-2"
+              className="block w-full text-left text-gray-700 hover:text-red-600 transition-colors duration-200 py-2"
             >
               {item.label}
             </button>

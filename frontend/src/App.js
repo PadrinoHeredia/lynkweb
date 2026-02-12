@@ -5,40 +5,32 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // Components
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
-import DifferentiationSection from "./components/DifferentiationSection";
-import PhilosophySection from "./components/PhilosophySection";
-import PresenciaSection from "./components/PresenciaSection";
-import EcosistemaSection from "./components/EcosistemaSection";
+import QueHacemosSection from "./components/QueHacemosSection";
 import AboutSection from "./components/AboutSection";
-import PhilosophyMainSection from "./components/PhilosophyMainSection";
 import ServicesSection from "./components/ServicesSection";
 import MapSection from "./components/MapSection";
 import PackagesSection from "./components/PackagesSection";
 import MethodologySection from "./components/MethodologySection";
-import TransparencySection from "./components/TransparencySection";
 import JobSection from "./components/JobSection";
-import ContactSection from "./components/ContactSection";
+import CTASection from "./components/CTASection";
 import SocialFeedSection from "./components/SocialFeedSection";
+import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 
 const Home = () => {
   return (
-    <div className="bg-black min-h-screen">
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
       <HeroSection />
-      <DifferentiationSection />
-      <PhilosophySection />
-      <PresenciaSection />
-      <EcosistemaSection />
+      <QueHacemosSection />
       <AboutSection />
-      <PhilosophyMainSection />
-      <ServicesSection />
       <MapSection />
+      <ServicesSection />
       <PackagesSection />
       <MethodologySection />
-      <TransparencySection />
       <JobSection />
+      <CTASection />
       <SocialFeedSection />
       <ContactSection />
       <Footer />

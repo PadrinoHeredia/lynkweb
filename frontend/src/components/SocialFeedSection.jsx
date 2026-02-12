@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Facebook, Instagram, ExternalLink, Image } from 'lucide-react';
+import React from 'react';
+import { Facebook, Instagram, ExternalLink } from 'lucide-react';
 import { siteConfig } from '../data/mock';
 
 const SocialFeedSection = () => {
-  // Mock social media posts since we can't actually fetch from FB/IG APIs without authentication
-  const [fbPosts] = useState([
+  const fbPosts = [
     {
       id: 1,
       image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=400&q=80',
@@ -20,9 +19,9 @@ const SocialFeedSection = () => {
       image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=400&q=80',
       caption: 'Resultados medibles'
     }
-  ]);
+  ];
 
-  const [igPosts] = useState([
+  const igPosts = [
     {
       id: 1,
       image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=400&q=80',
@@ -38,41 +37,41 @@ const SocialFeedSection = () => {
       image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=400&q=80',
       caption: 'Arquitectura web'
     }
-  ]);
+  ];
 
   return (
-    <section className="py-24 bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="container mx-auto px-4">
+        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Síguenos en <span className="text-red-500">Redes Sociales</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Síguenos en <span className="text-red-600">Redes Sociales</span>
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-xl text-gray-600">
             Manténte al día con nuestras últimas publicaciones
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Facebook Feed */}
-          <div>
+          <div className="bg-white rounded-3xl p-8 shadow-lg">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-blue-600/20 rounded-xl flex items-center justify-center">
-                  <Facebook size={24} className="text-blue-500" />
+                <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+                  <Facebook className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold">Facebook</h3>
-                  <p className="text-gray-400 text-sm">@synergyrent</p>
+                  <h3 className="text-gray-900 font-semibold">Facebook</h3>
+                  <p className="text-gray-500 text-sm">@synergyrent</p>
                 </div>
               </div>
               <a
                 href={siteConfig.socialMedia.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors text-sm"
+                className="flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors text-sm font-medium"
               >
-                Ver más <ExternalLink size={16} />
+                Ver más <ExternalLink className="w-4 h-4" />
               </a>
             </div>
             <div className="grid grid-cols-3 gap-4">
@@ -89,8 +88,8 @@ const SocialFeedSection = () => {
                     alt={post.caption}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <Facebook size={24} className="text-white" />
+                  <div className="absolute inset-0 bg-blue-600/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <Facebook className="w-6 h-6 text-white" />
                   </div>
                 </a>
               ))}
@@ -98,24 +97,24 @@ const SocialFeedSection = () => {
           </div>
 
           {/* Instagram Feed */}
-          <div>
+          <div className="bg-white rounded-3xl p-8 shadow-lg">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-xl flex items-center justify-center">
-                  <Instagram size={24} className="text-pink-500" />
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center">
+                  <Instagram className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold">Instagram</h3>
-                  <p className="text-gray-400 text-sm">@tracce_virtuale</p>
+                  <h3 className="text-gray-900 font-semibold">Instagram</h3>
+                  <p className="text-gray-500 text-sm">@tracce_virtuale</p>
                 </div>
               </div>
               <a
                 href={siteConfig.socialMedia.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-pink-400 hover:text-pink-300 transition-colors text-sm"
+                className="flex items-center gap-2 text-pink-600 hover:text-pink-700 transition-colors text-sm font-medium"
               >
-                Ver más <ExternalLink size={16} />
+                Ver más <ExternalLink className="w-4 h-4" />
               </a>
             </div>
             <div className="grid grid-cols-3 gap-4">
@@ -132,8 +131,8 @@ const SocialFeedSection = () => {
                     alt={post.caption}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/50 to-pink-500/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <Instagram size={24} className="text-white" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-600/50 to-pink-600/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <Instagram className="w-6 h-6 text-white" />
                   </div>
                 </a>
               ))}

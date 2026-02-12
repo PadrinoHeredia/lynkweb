@@ -6,8 +6,8 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <footer className="bg-gray-900 text-white">
+      <div className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
@@ -22,17 +22,17 @@ const Footer = () => {
               automatizar y dominar su entorno competitivo.
             </p>
             <div className="flex items-center gap-2 text-gray-500 text-sm">
-              <Globe size={16} />
+              <Globe className="w-4 h-4" />
               <span>Soporte en {siteConfig.languages.join(' e ')}</span>
             </div>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-white font-semibold mb-6">Contacto</h4>
+            <h4 className="text-white font-semibold mb-6 text-lg">Contacto</h4>
             <div className="space-y-4">
               <div className="flex items-start gap-3 text-gray-400">
-                <MapPin size={20} className="text-red-500 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
                 <span>{siteConfig.location}</span>
               </div>
               <div className="flex items-center gap-3 text-gray-400">
@@ -43,14 +43,14 @@ const Footer = () => {
                 href={`tel:${siteConfig.phone}`}
                 className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
               >
-                <Phone size={20} className="text-red-500" />
+                <Phone className="w-5 h-5 text-red-500" />
                 <span>{siteConfig.phone}</span>
               </a>
               <a
                 href={`mailto:${siteConfig.email}`}
                 className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
               >
-                <Mail size={20} className="text-red-500" />
+                <Mail className="w-5 h-5 text-red-500" />
                 <span>{siteConfig.email}</span>
               </a>
             </div>
@@ -58,7 +58,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold mb-6">Enlaces Rápidos</h4>
+            <h4 className="text-white font-semibold mb-6 text-lg">Enlaces Rápidos</h4>
             <div className="space-y-3">
               <a href="#inicio" className="block text-gray-400 hover:text-white transition-colors">
                 Inicio
@@ -93,7 +93,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-colors"
           >
-            <MessageCircle size={18} />
+            <MessageCircle className="w-4 h-4" />
             WhatsApp / Telegram
           </a>
         </div>
