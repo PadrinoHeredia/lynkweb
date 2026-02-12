@@ -3,7 +3,6 @@ import { Send, User, MapPin, Phone, Clock, Link2, MessageCircle } from 'lucide-r
 import { siteConfig, contactInfo } from '../data/mock';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 
@@ -33,7 +32,6 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     setTimeout(() => {
       const message = `
 *Nuevo contacto desde el sitio web LYNK*
@@ -67,201 +65,199 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contacto" className="py-24 bg-gradient-to-b from-black to-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Options */}
-          <div>
-            <div className="inline-flex items-center gap-2 bg-red-600/10 border border-red-600/20 rounded-full px-4 py-2 mb-6">
-              <MessageCircle size={18} className="text-red-500" />
-              <span className="text-red-400 text-sm font-medium">Contacto</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-              Contáctanos
-            </h2>
+    <section id="contacto" className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Contact Options */}
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
+                Contáctanos
+              </h2>
 
-            {/* Two contact options */}
-            <div className="space-y-6 mb-12">
-              <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/80 rounded-2xl p-6 border border-gray-700/50">
-                <h3 className="text-xl font-semibold text-white mb-3">
-                  {contactInfo.client.title}
-                </h3>
+              {/* Two contact options */}
+              <div className="space-y-6 mb-12">
+                <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-6 shadow-lg">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                    {contactInfo.client.title}
+                  </h3>
+                  <a
+                    href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
+                      'Hola, quiero mejorar la visibilidad de mi negocio'
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-red-600 hover:text-red-700 font-medium transition-colors"
+                  >
+                    {contactInfo.client.cta}
+                    <Send className="w-4 h-4" />
+                  </a>
+                </div>
+
+                <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 shadow-lg">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                    {contactInfo.job.title}
+                  </h3>
+                  <a
+                    href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
+                      'Hola, estoy interesado en formar parte de LYNK'
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                  >
+                    {contactInfo.job.cta}
+                    <Send className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Direct contact info */}
+              <div className="space-y-4">
                 <a
-                  href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
-                    'Hola, quiero mejorar la visibilidad de mi negocio'
-                  )}`}
+                  href={`https://wa.me/${siteConfig.whatsapp}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-red-400 hover:text-red-300 transition-colors"
+                  className="flex items-center gap-4 text-gray-700 hover:text-red-600 transition-colors"
                 >
-                  {contactInfo.client.cta}
-                  <Send size={16} />
+                  <div className="w-12 h-12 bg-gradient-to-r from-red-600 to-orange-600 rounded-full flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="text-lg">{siteConfig.phone}</span>
                 </a>
-              </div>
-
-              <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/80 rounded-2xl p-6 border border-gray-700/50">
-                <h3 className="text-xl font-semibold text-white mb-3">
-                  {contactInfo.job.title}
-                </h3>
-                <a
-                  href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
-                    'Hola, estoy interesado en formar parte de LYNK'
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-red-400 hover:text-red-300 transition-colors"
-                >
-                  {contactInfo.job.cta}
-                  <Send size={16} />
-                </a>
+                <div className="flex items-center gap-4 text-gray-700">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="text-lg">{siteConfig.location}</span>
+                </div>
               </div>
             </div>
 
-            {/* Direct contact info */}
-            <div className="space-y-4">
-              <a
-                href={`https://wa.me/${siteConfig.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors"
-              >
-                <div className="w-10 h-10 bg-red-600/10 rounded-lg flex items-center justify-center">
-                  <Phone size={20} className="text-red-500" />
+            {/* Contact Form */}
+            <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-xl border border-gray-100">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Formulario de Contacto</h3>
+              
+              {submitted ? (
+                <div className="text-center py-12">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Send className="w-8 h-8 text-green-600" />
+                  </div>
+                  <p className="text-gray-900 text-xl font-semibold">¡Mensaje enviado!</p>
+                  <p className="text-gray-600 mt-2">Nos pondremos en contacto contigo pronto.</p>
                 </div>
-                <span>{siteConfig.phone}</span>
-              </a>
-              <div className="flex items-center gap-4 text-gray-300">
-                <div className="w-10 h-10 bg-red-600/10 rounded-lg flex items-center justify-center">
-                  <MapPin size={20} className="text-red-500" />
-                </div>
-                <span>{siteConfig.location}</span>
-              </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <Label htmlFor="nombre" className="text-gray-700 mb-2 flex items-center gap-2">
+                      <User className="w-4 h-4" /> Nombre
+                    </Label>
+                    <Input
+                      id="nombre"
+                      name="nombre"
+                      value={formData.nombre}
+                      onChange={handleChange}
+                      placeholder="Tu nombre completo"
+                      required
+                      className="border-gray-300 focus:border-red-500"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="redesSociales" className="text-gray-700 mb-2 flex items-center gap-2">
+                      <Link2 className="w-4 h-4" /> Redes Sociales (Link a Facebook o Instagram)
+                    </Label>
+                    <Input
+                      id="redesSociales"
+                      name="redesSociales"
+                      value={formData.redesSociales}
+                      onChange={handleChange}
+                      placeholder="https://facebook.com/tunegocio"
+                      className="border-gray-300 focus:border-red-500"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="ubicacion" className="text-gray-700 mb-2 flex items-center gap-2">
+                      <MapPin className="w-4 h-4" /> Ubicación
+                    </Label>
+                    <Input
+                      id="ubicacion"
+                      name="ubicacion"
+                      value={formData.ubicacion}
+                      onChange={handleChange}
+                      placeholder="Ciudad, Estado"
+                      required
+                      className="border-gray-300 focus:border-red-500"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="telefono" className="text-gray-700 mb-2 flex items-center gap-2">
+                      <Phone className="w-4 h-4" /> Teléfono o WhatsApp
+                    </Label>
+                    <Input
+                      id="telefono"
+                      name="telefono"
+                      value={formData.telefono}
+                      onChange={handleChange}
+                      placeholder="+52 xxx xxx xxxx"
+                      required
+                      className="border-gray-300 focus:border-red-500"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="horarioContacto" className="text-gray-700 mb-2 flex items-center gap-2">
+                      <Clock className="w-4 h-4" /> Horario de Contacto
+                    </Label>
+                    <Input
+                      id="horarioContacto"
+                      name="horarioContacto"
+                      value={formData.horarioContacto}
+                      onChange={handleChange}
+                      placeholder="Ej: Lunes a Viernes 9am - 6pm"
+                      className="border-gray-300 focus:border-red-500"
+                    />
+                  </div>
+
+                  <div>
+                    <Label className="text-gray-700 mb-2">Está interesado en:</Label>
+                    <Select onValueChange={handleSelectChange} value={formData.interes}>
+                      <SelectTrigger className="border-gray-300 focus:border-red-500">
+                        <SelectValue placeholder="Selecciona una opción" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="visibilidad">Paquete LYNK Visibilidad</SelectItem>
+                        <SelectItem value="posicionamiento">Paquete LYNK Posicionamiento</SelectItem>
+                        <SelectItem value="dominio">Paquete LYNK Dominio Digital</SelectItem>
+                        <SelectItem value="arquitectura">Arquitectura Maestra</SelectItem>
+                        <SelectItem value="otro">Otro servicio</SelectItem>
+                        <SelectItem value="trabajo">Oportunidad laboral</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-red-600 hover:bg-red-700 text-white py-6 rounded-full font-semibold text-lg transition-all duration-300"
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center gap-2 justify-center">
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        Enviando...
+                      </span>
+                    ) : (
+                      <span className="flex items-center gap-2 justify-center">
+                        <Send className="w-5 h-5" />
+                        Enviar Mensaje
+                      </span>
+                    )}
+                  </Button>
+                </form>
+              )}
             </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/80 rounded-3xl p-8 border border-gray-700/50">
-            <h3 className="text-2xl font-bold text-white mb-6">Formulario de Contacto</h3>
-            
-            {submitted ? (
-              <div className="text-center py-12">
-                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Send size={32} className="text-green-500" />
-                </div>
-                <p className="text-white text-xl font-semibold">¡Mensaje enviado!</p>
-                <p className="text-gray-400 mt-2">Nos pondremos en contacto contigo pronto.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <Label htmlFor="nombre" className="text-gray-300 mb-2 flex items-center gap-2">
-                    <User size={16} /> Nombre
-                  </Label>
-                  <Input
-                    id="nombre"
-                    name="nombre"
-                    value={formData.nombre}
-                    onChange={handleChange}
-                    placeholder="Tu nombre completo"
-                    required
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-red-500"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="redesSociales" className="text-gray-300 mb-2 flex items-center gap-2">
-                    <Link2 size={16} /> Redes Sociales (Link a Facebook o Instagram)
-                  </Label>
-                  <Input
-                    id="redesSociales"
-                    name="redesSociales"
-                    value={formData.redesSociales}
-                    onChange={handleChange}
-                    placeholder="https://facebook.com/tunegocio"
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-red-500"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="ubicacion" className="text-gray-300 mb-2 flex items-center gap-2">
-                    <MapPin size={16} /> Ubicación
-                  </Label>
-                  <Input
-                    id="ubicacion"
-                    name="ubicacion"
-                    value={formData.ubicacion}
-                    onChange={handleChange}
-                    placeholder="Ciudad, Estado"
-                    required
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-red-500"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="telefono" className="text-gray-300 mb-2 flex items-center gap-2">
-                    <Phone size={16} /> Teléfono o WhatsApp
-                  </Label>
-                  <Input
-                    id="telefono"
-                    name="telefono"
-                    value={formData.telefono}
-                    onChange={handleChange}
-                    placeholder="+52 xxx xxx xxxx"
-                    required
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-red-500"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="horarioContacto" className="text-gray-300 mb-2 flex items-center gap-2">
-                    <Clock size={16} /> Horario de Contacto
-                  </Label>
-                  <Input
-                    id="horarioContacto"
-                    name="horarioContacto"
-                    value={formData.horarioContacto}
-                    onChange={handleChange}
-                    placeholder="Ej: Lunes a Viernes 9am - 6pm"
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-red-500"
-                  />
-                </div>
-
-                <div>
-                  <Label className="text-gray-300 mb-2">Está interesado en:</Label>
-                  <Select onValueChange={handleSelectChange} value={formData.interes}>
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white focus:border-red-500">
-                      <SelectValue placeholder="Selecciona una opción" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
-                      <SelectItem value="visibilidad" className="text-white">Paquete LYNK Visibilidad</SelectItem>
-                      <SelectItem value="posicionamiento" className="text-white">Paquete LYNK Posicionamiento</SelectItem>
-                      <SelectItem value="dominio" className="text-white">Paquete LYNK Dominio Digital</SelectItem>
-                      <SelectItem value="arquitectura" className="text-white">Arquitectura Maestra</SelectItem>
-                      <SelectItem value="otro" className="text-white">Otro servicio</SelectItem>
-                      <SelectItem value="trabajo" className="text-white">Oportunidad laboral</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-red-600 hover:bg-red-700 text-white py-6 rounded-xl font-semibold text-lg transition-all duration-300"
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center gap-2">
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Enviando...
-                    </span>
-                  ) : (
-                    <span className="flex items-center gap-2 justify-center">
-                      <Send size={20} />
-                      Enviar Mensaje
-                    </span>
-                  )}
-                </Button>
-              </form>
-            )}
           </div>
         </div>
       </div>

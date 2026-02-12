@@ -3,103 +3,81 @@ import { Check, Star, Crown, Rocket, Building2 } from 'lucide-react';
 import { packages, siteConfig } from '../data/mock';
 
 const packageIcons = [Star, Crown, Rocket, Building2];
+const packageColors = [
+  { bg: 'from-gray-50 to-white', border: 'border-gray-200', button: 'bg-gray-800 hover:bg-gray-900' },
+  { bg: 'from-red-50 to-orange-50', border: 'border-red-300', button: 'bg-red-600 hover:bg-red-700' },
+  { bg: 'from-blue-50 to-cyan-50', border: 'border-blue-300', button: 'bg-blue-600 hover:bg-blue-700' },
+  { bg: 'from-purple-50 to-pink-50', border: 'border-purple-300', button: 'bg-purple-600 hover:bg-purple-700' },
+];
 
 const PackagesSection = () => {
   return (
-    <section id="paquetes" className="py-24 bg-gradient-to-b from-black to-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+    <section id="paquetes" className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-red-600/10 border border-red-600/20 rounded-full px-4 py-2 mb-6">
-            <Crown size={18} className="text-red-500" />
-            <span className="text-red-400 text-sm font-medium">Paquetes</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Directorio y <span className="text-red-500">Posicionamiento</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Paquetes - <span className="text-red-600">Directorio y Posicionamiento</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Elige el paquete que mejor se adapte a las necesidades de tu negocio
           </p>
         </div>
 
         {/* Packages Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {packages.map((pkg, index) => {
             const IconComponent = packageIcons[index] || Star;
+            const color = packageColors[index % packageColors.length];
             const isHighlighted = pkg.highlighted;
-            const isSpecial = pkg.requiresDiagnosis;
 
             return (
               <div
                 key={pkg.id}
-                className={`relative rounded-3xl p-6 border transition-all duration-500 hover:transform hover:scale-[1.02] ${
-                  isHighlighted
-                    ? 'bg-gradient-to-br from-red-900/40 to-red-950/60 border-red-500/50'
-                    : isSpecial
-                    ? 'bg-gradient-to-br from-gray-800/80 to-gray-900/90 border-gray-600/50'
-                    : 'bg-gradient-to-br from-gray-800/50 to-gray-900/80 border-gray-700/50 hover:border-red-500/30'
-                }`}
+                className={`relative bg-gradient-to-br ${color.bg} rounded-3xl p-8 border-2 ${isHighlighted ? 'border-red-500 shadow-2xl scale-105' : color.border} transition-all duration-300 hover:shadow-xl hover:-translate-y-2`}
               >
                 {isHighlighted && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-red-600 text-white text-xs font-bold px-4 py-1 rounded-full">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span className="bg-red-600 text-white text-sm font-bold px-4 py-1 rounded-full">
                       POPULAR
                     </span>
                   </div>
                 )}
 
-                <div className="text-center mb-6 pt-2">
-                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 ${
-                    isHighlighted ? 'bg-red-600/30' : 'bg-red-600/10'
-                  }`}>
-                    <IconComponent size={28} className="text-red-500" />
+                <div className="text-center mb-6">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${isHighlighted ? 'from-red-600 to-orange-600' : 'from-gray-600 to-gray-700'} rounded-full flex items-center justify-center mx-auto mb-4`}>
+                    <IconComponent className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">PAQUETE {pkg.id}</h3>
-                  <p className={`text-xl font-bold ${
-                    isHighlighted ? 'text-red-400' : 'text-gray-200'
-                  }`}>
-                    {pkg.name}
-                  </p>
-                  <p className="text-gray-400 text-sm mt-2">
-                    Objetivo: {pkg.objective}
-                  </p>
+                  <p className="text-sm text-gray-500 mb-1">PAQUETE {pkg.id}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
+                  <p className="text-sm text-gray-600">Objetivo: {pkg.objective}</p>
                 </div>
 
-                <div className="space-y-3 mb-6">
+                <div className="space-y-3 mb-8">
                   {pkg.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-start gap-3">
-                      <Check size={18} className="text-red-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300 text-sm">{feature}</span>
+                      <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 text-sm">{feature}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="text-center pt-4 border-t border-gray-700/50">
-                  <p className="text-gray-400 text-sm mb-4">
-                    {isSpecial ? 'Requiere diagnóstico previo' : 'Precio mensual'}
+                <div className="text-center pt-4 border-t border-gray-200">
+                  <p className="text-sm text-gray-500 mb-2">
+                    {pkg.requiresDiagnosis ? 'Requiere diagnóstico previo' : 'Precio mensual'}
                   </p>
-                  <p className={`text-2xl font-bold mb-4 ${
-                    isHighlighted ? 'text-red-400' : 'text-white'
-                  }`}>
-                    {pkg.price}
-                  </p>
+                  <p className="text-2xl font-bold text-gray-900 mb-4">{pkg.price}</p>
                   <a
                     href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
-                      isSpecial 
-                        ? 'Hola, me interesa una Evaluación Estratégica para el paquete Arquitectura Maestra'
+                      pkg.requiresDiagnosis
+                        ? 'Hola, me interesa una Evaluación Estratégica para Arquitectura Maestra'
                         : `Hola, me interesa el paquete ${pkg.name}`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`block w-full py-3 rounded-xl font-semibold transition-all duration-300 ${
-                      isHighlighted
-                        ? 'bg-red-600 hover:bg-red-700 text-white'
-                        : isSpecial
-                        ? 'bg-gray-700 hover:bg-gray-600 text-white'
-                        : 'bg-gray-700/50 hover:bg-red-600 text-white'
-                    }`}
+                    className={`block w-full ${color.button} text-white py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105`}
                   >
-                    {isSpecial ? 'Solicitar Evaluación' : 'Seleccionar'}
+                    {pkg.requiresDiagnosis ? 'Solicitar Evaluación' : 'Seleccionar'}
                   </a>
                 </div>
               </div>
